@@ -1,4 +1,4 @@
-import FnB from "../Models/FnBModule.js";
+import FnB from "../Models/FnBModle.js";
 import { errorHandler } from "../Utils/errorHandler.js";
 
 export const get = async (req, res, next) => {
@@ -44,6 +44,22 @@ export const put = async (req, res, next) => {
     return res
       .status(200)
       .json({ message: "New fnb imports successfully", datas: rest });
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+export const dispatch = async (req, res, next) => {
+  try {
+    const { _id } = await req.body;
+
+   await FnB.findByIdAndDelete(_id);
+
+
+    return res
+      .status(200)
+      .json({ message: "fnb deletes successfully"});
   } catch (error) {
     next(error);
   }
