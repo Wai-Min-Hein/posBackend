@@ -4,6 +4,7 @@ import { errorHandler } from "../Utils/errorHandler.js";
 const authMiddleware = async (req, res, next) => {
   const token = req.cookies.token;
 
+
   if (!token) {
     return next(errorHandler(401, "Unauthorized"));
   }
@@ -11,6 +12,7 @@ const authMiddleware = async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.Secret_Token);
     req.user = decoded;
+
 
 
     next();

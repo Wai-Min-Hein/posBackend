@@ -10,6 +10,11 @@ import fnbRoutes from "./Routes/fnbRoute.js";
 
 import retailPriceRoutes from "./Routes/retailPriceRoute.js";
 import authRoutes from "./Routes/authRoute.js";
+import permissionRoleRoute from "./Routes/permissionRoleRoute.js"
+
+
+
+
 import authMiddleware from "./MiddleWares/AuthMiddleware.js";
 import { rabcMiddleware } from "./MiddleWares/RbacMiddleware.js";
 
@@ -35,9 +40,10 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 
-app.use("/fnb", authMiddleware, rabcMiddleware(['fnbb']), fnbRoutes);
+app.use("/fnb", authMiddleware, rabcMiddleware(['view'],'Fnb'), fnbRoutes);
 app.use("/retailprice", rabcMiddleware(['retilPrice']), retailPriceRoutes);
 app.use("/auth", authRoutes);
+app.use("/permissionsroles",permissionRoleRoute);
 
 
 app.use((error, req, res, next) => {

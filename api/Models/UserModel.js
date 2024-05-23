@@ -5,7 +5,7 @@ const userSchema = new Schema({
     email: { type: String, required: true},
     password: { type: String, required: true},
     role: { type: String, required: true},
-    permissions: { type: [String], default: [] },
+    // permissions: { type: [String], default: [] },
 })
 
 const User = mongoose.model("User", userSchema);
