@@ -6,14 +6,15 @@ const FnBSchema = new Schema({
         type: String,
         required: true
     },
+    img: {
+        type: String,
+        required: false,
+    },
     description: {
         type: String,
         required: false
     },
-    price: {
-        type: Number,
-        required: true
-    },
+  
     createdByImage: {
         type: String,
         required: false

@@ -59,7 +59,7 @@ export const signIn = async (req, res, next) => {
 
 
 
-  return res.status(200).cookie('token', token, {httpOnly: true}).json({ message: "User sign in successfully" });
+  return res.status(200).cookie('token', token, {httpOnly: true}).json({ message: "User sign in successfully", user: rest, token });
 
   
 

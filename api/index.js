@@ -40,7 +40,8 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 
-app.use("/fnb", authMiddleware, rabcMiddleware(['view'],'Fnb'), fnbRoutes);
+// app.use("/fnb", authMiddleware, rabcMiddleware(['view'],'Fnb'), fnbRoutes);
+app.use("/fnb",  fnbRoutes);
 app.use("/retailprice", rabcMiddleware(['retilPrice']), retailPriceRoutes);
 app.use("/auth", authRoutes);
 app.use("/permissionsroles",permissionRoleRoute);

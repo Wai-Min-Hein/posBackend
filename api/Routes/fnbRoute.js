@@ -6,7 +6,8 @@ import { rabcMiddleware } from '../MiddleWares/RbacMiddleware.js';
 const router = express.Router();
 
 router.get('/', get)
-router.post('/', rabcMiddleware(['create'],'Fnb'), post)
+// router.post('/', rabcMiddleware(['create'],'Fnb'), post)
+router.post('/', post)
 router.put('/', put)
 router.delete('/', rabcMiddleware(['delete'],'Fnb'), dispatch)
 
