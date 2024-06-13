@@ -16,10 +16,12 @@ export const post = async (req, res, next) => {
     const request = await req.body;
 
     const sku = request.sku;
+    const name = request.name;
 
     const isSkuExist = await FnB.findOne({ sku });
+    const isNameExist = await FnB.findOne({ name });
 
-    if (isSkuExist) return next(errorHandler(400, "Sku already exists"));
+    if (isSkuExist && isNameExist) return next(errorHandler(400, "Sku already exists"));
 
     const newFnB = new FnB(request);
 

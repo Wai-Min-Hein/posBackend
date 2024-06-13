@@ -12,6 +12,10 @@ import retailPriceRoutes from "./Routes/retailPriceRoute.js";
 import authRoutes from "./Routes/authRoute.js";
 import permissionRoleRoute from "./Routes/permissionRoleRoute.js"
 
+import csaRoute from "./Routes/CsaRoute.js";
+
+import priceTableRoute from "./Routes/PriceTableRoute.js"
+
 
 
 
@@ -45,6 +49,10 @@ app.use("/fnb",  fnbRoutes);
 app.use("/retailprice", rabcMiddleware(['retilPrice']), retailPriceRoutes);
 app.use("/auth", authRoutes);
 app.use("/permissionsroles",permissionRoleRoute);
+
+app.use("/csa",csaRoute);
+app.use("/pricetable",priceTableRoute);
+
 
 
 app.use((error, req, res, next) => {

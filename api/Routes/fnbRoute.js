@@ -9,6 +9,7 @@ router.get('/', get)
 // router.post('/', rabcMiddleware(['create'],'Fnb'), post)
 router.post('/', post)
 router.put('/', put)
-router.delete('/', rabcMiddleware(['delete'],'Fnb'), dispatch)
+// router.delete('/', rabcMiddleware(['delete'],'Fnb'), dispatch)
+router.delete('/', dispatch)
 
 export default router;
