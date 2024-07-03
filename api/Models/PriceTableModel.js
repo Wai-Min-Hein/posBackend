@@ -2,6 +2,8 @@ import mongoose, { Schema } from "mongoose";
 
 const menuSchema = new Schema({
   name: { type: String, required: true },
+  menuId: { type: String, required: true },
+  category: { type: String, required: true },
   price: { type: mongoose.Schema.Types.Mixed, required: true },
   vat: { type: mongoose.Schema.Types.Mixed, required: true },
   disPercent: { type: mongoose.Schema.Types.Mixed, required: true },

@@ -11,6 +11,17 @@ export const get = async (req, res, next) => {
   }
 };
 
+export const getSingle = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const datas = await FnB.findById(id);
+
+    return res.status(200).json({ success: true, datas });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const post = async (req, res, next) => {
   try {
     const request = await req.body;

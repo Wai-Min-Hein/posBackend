@@ -16,6 +16,8 @@ import csaRoute from "./Routes/CsaRoute.js";
 
 import priceTableRoute from "./Routes/PriceTableRoute.js"
 
+import branchRoute from "./Routes/BranchRoute.js"
+
 
 
 
@@ -52,6 +54,9 @@ app.use("/permissionsroles",permissionRoleRoute);
 
 app.use("/csa",csaRoute);
 app.use("/pricetable",priceTableRoute);
+
+app.use("/branch",branchRoute);
+
 
 
 

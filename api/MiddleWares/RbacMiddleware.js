@@ -32,3 +32,4 @@ export const rabcMiddleware = (requiredPermissions = [], requiredModule) => {
     }
   };
 };
+
