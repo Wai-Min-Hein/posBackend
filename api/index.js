@@ -19,6 +19,11 @@ import priceTableRoute from "./Routes/PriceTableRoute.js"
 import branchRoute from "./Routes/BranchRoute.js"
 
 
+import menucategoryRoute from './Routes/MenuCategoryRoute.js'
+import productcategoryRoute from './Routes/ProductCategoryRoute.js'
+import productRoute from './Routes/ProductRoute.js'
+
+
 
 
 import authMiddleware from "./MiddleWares/AuthMiddleware.js";
@@ -56,6 +61,9 @@ app.use("/csa",csaRoute);
 app.use("/pricetable",priceTableRoute);
 
 app.use("/branch",branchRoute);
+app.use("/menucategory",menucategoryRoute);
+app.use("/productcategory",productcategoryRoute);
+app.use("/product",productRoute);
 
 
 
