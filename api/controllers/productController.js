@@ -21,7 +21,7 @@ export const getProductsByCategory = async (req, res, next) => {
       const categoryId = req.params.categoryId;
   
       // Find products by category ID
-      const products = await Product.find({ category: categoryId });
+      const products = await Product.find({ category: categoryId }).populate('category').exec();
   
       if (!products || products.length === 0) {
         return next(errorHandler(404, "No products found for this category"));
