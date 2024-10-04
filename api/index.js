@@ -46,9 +46,14 @@ mongoose
 
 
 const app = express();
+const allowedOrigins = ['http://localhost:3000'];
 
+app.use(cors({
+  origin: allowedOrigins,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Include credentials if needed
+}));
 app.use(express.json());
-app.use(cors());
 app.use(cookieParser());
 
 // app.use("/fnb", authMiddleware, rabcMiddleware(['view'],'Fnb'), fnbRoutes);
