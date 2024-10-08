@@ -14,8 +14,8 @@ const menuSchema = new Schema({
 const priceTableSchema = new Schema({
   code: { type: String, required: true },
   name: { type: String, required: true },
-  branch: { type: String, required: true },
-  area: { type: String, required: true },
+  branch: { type: Schema.ObjectId,ref: 'Branch', required: true },
+  area: { type: Schema.ObjectId,ref: 'Csa', required: true },
   startDate: { type: Date , required: true },
   endDate: { type: Date, required: true },
   menus: { type: [menuSchema], required: true },
