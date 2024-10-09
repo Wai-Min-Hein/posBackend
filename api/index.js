@@ -57,18 +57,18 @@ app.use(express.json());
 app.use(cookieParser());
 
 // app.use("/fnb", authMiddleware, rabcMiddleware(['view'],'Fnb'), fnbRoutes);
-app.use("/fnb",  fnbRoutes);
-app.use("/retailprice", rabcMiddleware(['retilPrice']), retailPriceRoutes);
-app.use("/auth", authRoutes);
-app.use("/permissionsroles",permissionRoleRoute);
+app.use("/api/fnb",  fnbRoutes);
+app.use("/api/retailprice", rabcMiddleware(['retilPrice']), retailPriceRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/permissionsroles",permissionRoleRoute);
 
-app.use("/csa",csaRoute);
-app.use("/pricetable",priceTableRoute);
+app.use("/api/csa",csaRoute);
+app.use("/api/pricetable",priceTableRoute);
 
-app.use("/branch",branchRoute);
-app.use("/menucategory",menucategoryRoute);
-app.use("/productcategory",productcategoryRoute);
-app.use("/product",productRoute);
+app.use("/api/api/branch",branchRoute);
+app.use("/api/menucategory",menucategoryRoute);
+app.use("/api/productcategory",productcategoryRoute);
+app.use("/api/product",productRoute);
 
 
 
@@ -87,3 +87,6 @@ app.use((error, req, res, next) => {
 app.listen(process.env.Port, () => {
   console.log("Server listening on port : " + process.env.Port);
 });
+
+
+export default app
