@@ -46,7 +46,7 @@ mongoose
 
 
 const app = express();
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['http://localhost:3000','https://alipos-next.vercel.app/'];
 
 app.use(cors({
   origin: allowedOrigins,
