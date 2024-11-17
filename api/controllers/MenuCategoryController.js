@@ -18,6 +18,7 @@ export const post = async (req, res, next) => {
 
         const name = request.name;
 
+
         const isNameExisted = await MenuCategory.findOne({name});
         if (isNameExisted) {
             return next(errorHandler(400, "Name already exists"));

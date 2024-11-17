@@ -24,7 +24,8 @@ const FnBSchema = new Schema({
         required: false
     },
     category: {
-        type: String,
+        type: Schema.ObjectId,
+        ref:'MenuCategory',
         required: true
     },
     sku: {

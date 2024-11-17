@@ -65,7 +65,7 @@ app.use("/api/permissionsroles",permissionRoleRoute);
 app.use("/api/csa",csaRoute);
 app.use("/api/pricetable",priceTableRoute);
 
-app.use("/api/api/branch",branchRoute);
+app.use("/api/branch",branchRoute);
 app.use("/api/menucategory",menucategoryRoute);
 app.use("/api/productcategory",productcategoryRoute);
 app.use("/api/product",productRoute);

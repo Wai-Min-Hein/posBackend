@@ -11,6 +11,6 @@ router.get('/:id', getSingle)
 router.post('/', post)
 router.put('/', put)
 // router.delete('/', rabcMiddleware(['delete'],'Fnb'), dispatch)
-router.delete('/', dispatch)
+router.delete('/:id', dispatch)
 
 export default router;

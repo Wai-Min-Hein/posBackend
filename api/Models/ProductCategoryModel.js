@@ -19,7 +19,6 @@ const ProductCategorySchema = new Schema({
 ProductCategorySchema.pre('deleteOne', { document: true, query: false }, async function(next) {
     try {
         await Product.deleteMany({ category: this._id });
-        console.log('products deleted')
         next();
     } catch (err) {
         next(err);

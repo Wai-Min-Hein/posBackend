@@ -1,9 +1,10 @@
 import FnB from "../Models/FnBModle.js";
+import priceTable from "../Models/PriceTableModel.js";
 import { errorHandler } from "../Utils/errorHandler.js";
 
 export const get = async (req, res, next) => {
   try {
-    const datas = await FnB.find();
+    const datas = await FnB.find().populate('category')
 
     return res.status(200).json({ success: true, datas });
   } catch (error) {
@@ -14,7 +15,7 @@ export const get = async (req, res, next) => {
 export const getSingle = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const datas = await FnB.findById(id);
+    const datas = await FnB.findById(id).populate('category');
 
     return res.status(200).json({ success: true, datas });
   } catch (error) {
@@ -32,7 +33,8 @@ export const post = async (req, res, next) => {
     const isSkuExist = await FnB.findOne({ sku });
     const isNameExist = await FnB.findOne({ name });
 
-    if (isSkuExist && isNameExist) return next(errorHandler(400, "Sku already exists"));
+    if (isSkuExist && isNameExist)
+      return next(errorHandler(400, "Sku already exists"));
 
     const newFnB = new FnB(request);
 
@@ -62,17 +64,18 @@ export const put = async (req, res, next) => {
   }
 };
 
-
 export const dispatch = async (req, res, next) => {
   try {
-    const { _id } = await req.body;
+    const id = req.params.id;
 
-   await FnB.findByIdAndDelete(_id);
+    await FnB.findByIdAndDelete(id);
 
+    await priceTable.updateMany(
+      { "menus.menu": id }, // Find priceTables where menu references the deleted fnb
+      { $pull: { menus: { menu: id } } } // Remove the specific menu entry
+    );
 
-    return res
-      .status(200)
-      .json({ message: "fnb deletes successfully"});
+    return res.status(200).json({ message: "fnb deletes successfully" });
   } catch (error) {
     next(error);
   }

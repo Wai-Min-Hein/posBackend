@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const menuSchema = new Schema({
   // name: { type: String, required: true },
-  menuId: { type: String, required: true },
+  menu: { type: Schema.ObjectId,ref: 'FnB', required: true },
   // category: { type: String, required: true },
   price: { type: mongoose.Schema.Types.Mixed, required: true },
   vat: { type: mongoose.Schema.Types.Mixed, required: true },
