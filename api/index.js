@@ -22,7 +22,7 @@ import branchRoute from "./Routes/BranchRoute.js"
 import menucategoryRoute from './Routes/MenuCategoryRoute.js'
 import productcategoryRoute from './Routes/ProductCategoryRoute.js'
 import productRoute from './Routes/ProductRoute.js'
-
+import posBillRoute from './Routes/posBillRoute.js'
 
 
 
@@ -69,6 +69,8 @@ app.use("/api/branch",branchRoute);
 app.use("/api/menucategory",menucategoryRoute);
 app.use("/api/productcategory",productcategoryRoute);
 app.use("/api/product",productRoute);
+app.use("/api/product",productRoute);
+app.use("/api/posbill",posBillRoute);
 
 
 
