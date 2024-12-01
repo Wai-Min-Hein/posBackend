@@ -3,7 +3,8 @@ import mongoose, {Schema} from "mongoose";
 const BillMenuSchema = new Schema({
     menuId: 
     {
-        type: String,
+        type: Schema.ObjectId,
+        ref: 'FnB',
         required: true
     },
     discountedAmount: 
@@ -12,6 +13,10 @@ const BillMenuSchema = new Schema({
         required: true
     },
     price:{
+        type: Number,
+        required: true
+    },
+    qty:{
         type: Number,
         required: true
     },
@@ -26,6 +31,10 @@ const PosBillSchema = new Schema({
         required: true
     },
     paymentMethod: {
+        type: String,
+        required: true
+    },
+    area: {
         type: String,
         required: true
     },
@@ -52,6 +61,10 @@ const PosBillSchema = new Schema({
         type: Number,
         required: true
     },
+    productAmount: {
+        type: Number,
+        required: true
+    },
     totalQty: {
         type: Number,
         required: true
@@ -63,7 +76,11 @@ const PosBillSchema = new Schema({
     billMenus: {
         type: [BillMenuSchema],
         required: true
-    }
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now, 
+      },
 })
 
 const PosBill = mongoose.model('PosBill', PosBillSchema)

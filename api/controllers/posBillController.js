@@ -2,7 +2,7 @@ import PosBill from "../Models/posBillModel.js";
 
 export const get = async (req, res) => {
   try {
-    const datas = await PosBill.find();
+    const datas = await PosBill.find().populate('billMenus.menuId');
     return res.status(200).json({ success: true, datas });
   } catch (error) {
     console.log(error);
