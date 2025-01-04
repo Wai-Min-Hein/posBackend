@@ -66,9 +66,9 @@ export const signIn = async (req, res, next) => {
       .status(200)
       .cookie("token", token, {
         httpOnly: true,
-        secure: false, // Use secure only in production
-        sameSite: "none",
-        path: '/'
+        secure: true, // Use secure only in production
+        sameSite: "None", // Allow cross-origin usage
+        path: "/", 
       })
       .json({ message: "User sign in successfully", user: rest });
   } catch (error) {
