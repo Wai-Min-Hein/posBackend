@@ -68,7 +68,6 @@ export const signIn = async (req, res, next) => {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production", // Use secure only in production
         sameSite: "None", // Allow cross-origin usage
-        path: "/", 
       })
       .json({ message: "User sign in successfully", user: rest });
   } catch (error) {
