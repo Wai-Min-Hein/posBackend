@@ -64,14 +64,14 @@ export const signIn = async (req, res, next) => {
 
     return res
       .status(200)
-      .cookie("token", token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV?.includes("production"), // Use secure only in production
-        sameSite: "None", // Allow cross-origin usage
-        domain: '.vercel.app',
-      })
-      .json({ message: "User sign in successfully", user: rest,NODE_ENV: process.env.NODE_ENV,
-        secure: process.env.NODE_ENV?.includes("production"), });
+
+      // .cookie("token", token, {
+      //   httpOnly: true,
+      //   secure: process.env.NODE_ENV === "production", // Use secure only in production
+      //   sameSite:process.env.NODE_ENV === "production"? "None": "Lax", // Allow cross-origin usage
+      //   maxAge: 60 * 60 * 24, //1 day
+      // })
+      .json({ message: "User sign in successfully", user: rest, token: token });
   } catch (error) {
     next(error);
   }
