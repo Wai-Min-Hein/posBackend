@@ -26,6 +26,7 @@ export const getSingle = async (req, res, next) => {
 export const post = async (req, res, next) => {
   try {
     const request = await req.body;
+   
 
     const sku = request.sku;
     const name = request.name;
