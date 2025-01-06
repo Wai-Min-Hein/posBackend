@@ -48,10 +48,6 @@ mongoose
 const app = express();
 const allowedOrigins = ['http://localhost:3000','https://alipos-next.vercel.app'];
 
-console.log("NODE_ENV: ", process.env.NODE_ENV);
-console.log("allowedOrigins: ", allowedOrigins);
-
-console.log('Is Secure: ',process.env.NODE_ENV === "production")
 
 app.use(cors({
   origin: allowedOrigins,
