@@ -66,11 +66,11 @@ export const signIn = async (req, res, next) => {
       .status(200)
       .cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production", // Use secure only in production
+        secure: process.env.NODE_ENV?.includes("production"), // Use secure only in production
         sameSite: "None", // Allow cross-origin usage
       })
       .json({ message: "User sign in successfully", user: rest,NODE_ENV: process.env.NODE_ENV,
-        secure: process.env.NODE_ENV === "production", });
+        secure: process.env.NODE_ENV?.includes("production"), });
   } catch (error) {
     next(error);
   }
