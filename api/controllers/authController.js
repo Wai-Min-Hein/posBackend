@@ -68,8 +68,6 @@ export const signIn = async (req, res, next) => {
         httpOnly: true,
         secure: process.env.NODE_ENV?.includes("production"), // Use secure only in production
         sameSite: "None", // Allow cross-origin usage
-        domain: ".vercel.app",
-        path: "/",
       })
       .json({ message: "User sign in successfully", user: rest,NODE_ENV: process.env.NODE_ENV,
         secure: process.env.NODE_ENV?.includes("production"), });
