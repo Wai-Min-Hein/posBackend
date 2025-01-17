@@ -57,10 +57,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 // app.use("/fnb", authMiddleware, rabcMiddleware(['view'],'Fnb'), fnbRoutes);
-app.use("/api/fnb",  fnbRoutes);
+app.use("/api/fnb",authMiddleware,  fnbRoutes);
 app.use("/api/retailprice", rabcMiddleware(['retilPrice']), retailPriceRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/permissionsroles",permissionRoleRoute);
+app.use("/api/permissionsroles",authMiddleware,permissionRoleRoute);
 
 app.use("/api/csa",csaRoute);
 app.use("/api/pricetable",priceTableRoute);

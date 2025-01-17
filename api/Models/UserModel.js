@@ -5,12 +5,12 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true, 
+    unique: true,
     lowercase: true,
     trim: true,
   },
   password: { type: String, required: true },
-  // role: { type: String, required: true},
+  role: { type: Schema.ObjectId, ref: 'PermissionRoles', required: true },
   // permissions: { type: [String], default: [] },
 });
 

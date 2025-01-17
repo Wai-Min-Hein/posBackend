@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import PermissionRole from "../Models/PermissionRoleModel.js";
 import { errorHandler } from "../Utils/errorHandler.js";
 
@@ -11,12 +12,35 @@ export const get = async (req, res, next) => {
   }
 };
 
+
+export const getPermissionByToken = async (req, res, next) => {
+  try {
+    const { role } = req.user;
+
+    // Convert role to ObjectId
+
+    const datas = await PermissionRole.findById(role);
+
+    if (!datas) {
+      return res.status(404).json({ success: false, message: "Role not found" });
+    }
+
+    console.log("datas:", datas.permissions);
+
+    return res.status(200).json({ success: true, permissions: datas.permissions });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const post = async (req, res, next) => {
   try {
     const request = await req.body;
 
     const newDatas = new PermissionRole(request);
     await newDatas.save();
+
+    console.log(res)
 
     return res
       .status(200)

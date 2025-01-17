@@ -4,14 +4,14 @@ const permissionSchema = new Schema({
     module: {
       type: String ,
       required: true,
-      unique: true,
+      // unique: true,
     },
     permissions: {
       type: [String],
       required: true,
     //   enum: ['create', 'edit', 'delete', 'view']
     }
-  });
+  },{_id: false});
 
 const permissionRoleSchema = new Schema({
     roleName: { type: String, required: true},

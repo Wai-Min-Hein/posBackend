@@ -6,7 +6,7 @@ import { errorHandler } from "../Utils/errorHandler.js";
 export const signUp = async (req, res, next) => {
   try {
     // const { userName, password, email, role, permissions } = req.body;
-    const { userName, password, email } = req.body;
+    const { userName, password, email,role } = req.body;
     if (!userName || !password || !email)
       return next(errorHandler(400, "Please enter entries from"));
 
@@ -20,7 +20,7 @@ export const signUp = async (req, res, next) => {
       userName,
       password: hashedPassword,
       email,
-      // role,
+      role,
       // permissions
     });
 
