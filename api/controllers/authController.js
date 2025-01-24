@@ -67,7 +67,7 @@ export const signIn = async (req, res, next) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production", // Use secure only in production
       sameSite:process.env.NODE_ENV === "production"? "None": "Lax", // Allow cross-origin usage
-      maxAge: 60 * 60 * 24 * 7, //7 day
+      maxAge: 60 * 60 * 24 * 7 * 1000, //7 day
     });
   
 

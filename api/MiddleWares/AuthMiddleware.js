@@ -4,17 +4,14 @@ import { errorHandler } from "../Utils/errorHandler.js";
 const authMiddleware = async (req, res, next) => {
   const refreshToken = req.cookies.refreshToken;
 
-  console.log('refreshToken: ',refreshToken)
 
-  // const authHeader = req.headers.authorization;
-  // const accessToken = authHeader && authHeader.split(" ")[1];
+  const authHeader = req.headers.authorization;
+  const accessToken = authHeader && authHeader.split(" ")[1];
 
-  // console.log("accessToken: ",accessToken)
-
-  // // If neither refreshToken nor accessToken is provided, return 401 Unauthorized
-  // if ( !accessToken) {
-  //   return next(errorHandler(401, "Unauthorized: Missing Access token"));
-  // }
+  // If neither refreshToken nor accessToken is provided, return 401 Unauthorized
+  if ( !accessToken) {
+    return next(errorHandler(401, "Unauthorized: Missing Access token"));
+  }
 
 
   if (!refreshToken) {
