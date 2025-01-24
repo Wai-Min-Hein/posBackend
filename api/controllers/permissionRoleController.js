@@ -25,7 +25,6 @@ export const getPermissionByToken = async (req, res, next) => {
       return res.status(404).json({ success: false, message: "Role not found" });
     }
 
-    console.log("datas:", datas.permissions);
 
     return res.status(200).json({ success: true, permissions: datas.permissions });
   } catch (error) {
