@@ -24,13 +24,13 @@ export const rabcMiddleware = ( requiredModule,requiredPermissions) => {
   
 
       if(!isAuthorizedModule || !isAuthorizedPermission){
-        return next(errorHandler(401, "You do not have permission"));
+        return next(errorHandler(403, "You do not have permission"));
       }
 
 
       next();
     } catch (error) {
-      next(errorHandler(401, "You do not have permission"));
+      next(errorHandler(403, "You do not have permission"));
     }
   };
 };
