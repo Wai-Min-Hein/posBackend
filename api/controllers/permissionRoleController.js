@@ -21,12 +21,14 @@ export const getPermissionByToken = async (req, res, next) => {
 
     const datas = await PermissionRole.findById(role);
 
+    console.log(datas)
+
     if (!datas) {
       return res.status(404).json({ success: false, message: "Role not found" });
     }
 
 
-    return res.status(200).json({ success: true, permissions: datas.permissions });
+    return res.status(200).json({ success: true, permissions: datas.permissions, roleName: datas.roleName });
   } catch (error) {
     next(error);
   }

@@ -14,12 +14,13 @@ const authMiddleware = async (req, res, next) => {
   }
 
 
+
   if (!refreshToken) {
     return next(errorHandler(401, "Unauthorized: Missing Refresh token"));
   }
 
   try {
-    const decoded = jwt.verify(refreshToken, process.env.Secret_Token);
+    const decoded = jwt.verify(accessToken, process.env.Secret_Token);
     req.user = decoded;
 
     next();

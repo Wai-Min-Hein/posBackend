@@ -6,11 +6,15 @@ export const rabcMiddleware = ( requiredModule,requiredPermissions) => {
     try {
       const { role } = req.user;
 
-
-
+      
       const userRole = await PermissionRole.findById(role);
 
       const userPermissions = userRole.permissions;
+
+
+      if(userRole.roleName == "admin"){
+        return next();
+      }
 
 
       const isAuthorizedModule = userPermissions.some(

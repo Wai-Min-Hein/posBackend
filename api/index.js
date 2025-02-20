@@ -69,7 +69,6 @@ app.use("/api/branch",branchRoute);
 app.use("/api/menucategory",menucategoryRoute);
 app.use("/api/productcategory",productcategoryRoute);
 app.use("/api/product",productRoute);
-app.use("/api/product",productRoute);
 app.use("/api/posbill",posBillRoute);
 
 
