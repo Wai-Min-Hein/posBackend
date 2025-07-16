@@ -60,15 +60,9 @@ export const signIn = async (req, res, next) => {
     const checkPassword = bcryptjs.compareSync(password, user.password);
     if (!checkPassword) return next(errorHandler(401, "Password is incorrect"));
 
-    const refreshToken = jwt.sign(rest, process.env.Secret_Token, { expiresIn: "7d" });
     const accessToken = jwt.sign(rest, process.env.Secret_Token, { expiresIn: "5m" });
 
-    res.cookie('refreshToken', refreshToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Use secure only in production
-      sameSite:process.env.NODE_ENV === "production"? "None": "Lax", // Allow cross-origin usage
-      maxAge: 60 * 60 * 24 * 7 * 1000, //7 day
-    });
+    
   
 
     return res
@@ -79,26 +73,3 @@ export const signIn = async (req, res, next) => {
   }
 };
 
-
-export const refreshAccessToken = async (req, res, next) => {
-  try {
-    const { refreshToken } = req.cookies; // Retrieve refreshToken from cookies
-
-    if (!refreshToken) return next(errorHandler(401, "Refresh token not provided"));
-
-    jwt.verify(refreshToken, process.env.Secret_Token, async (err, decoded) => {
-      if (err) return next(errorHandler(403, "Invalid refresh token"));
-
-      const user = await User.findById(decoded._id); // Validate user from decoded payload
-      if (!user) return next(errorHandler(404, "User not found"));
-
-      const { password, __v, ...rest } = user._doc;
-
-      const newAccessToken = jwt.sign(rest, process.env.Secret_Token, { expiresIn: "5m" });
-
-      return res.status(200).json({ accessToken: newAccessToken });
-    });
-  } catch (error) {
-    next(error);
-  }
-};
